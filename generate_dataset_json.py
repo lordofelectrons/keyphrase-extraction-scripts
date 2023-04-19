@@ -507,9 +507,25 @@ def main():
         )
 
     inputs = []
-    for entry in (raw_datasets["train"][extractive_keyphrases] + raw_datasets["train"][abstractive_keyphrases]):
+    example_lengths = []
+    for entry in (raw_datasets["train"][extractive_keyphrases]):
         if entry:
-            inputs.extend([x for x in entry if x])
+            entry = [x for x in entry if x]
+            inputs.extend(entry)
+            example_lengths.append(len(entry))
+        else:
+            example_lengths.append(0)
+
+    num = 0
+    for entry in (raw_datasets["train"][abstractive_keyphrases]):
+        if entry:
+            entry = [x for x in entry if x]
+            inputs.extend(entry)
+            if len(example_lengths) > num:
+                example_lengths[num] += len(entry)
+        num += 1
+
+    random.shuffle(example_lengths)
     inputs = list(set(inputs))
     filepath = "/gpfs/space/home/filipenk/tmp/train_inspec.json"
     num_batches = 1000
