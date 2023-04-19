@@ -539,7 +539,10 @@ def main():
     for progress in range(num_batches):
         keywords_total = []
         for i in range(batch_size):
-            keywords = random.sample(inputs, random.randint(4, 9))
+            keywords = random.sample(inputs, example_lengths[num])
+            num += 1
+            if num == len(example_lengths):
+                num = 0
             keywords_total.append(', '.join(keywords))
         tokenized_text = tokenizer(keywords_total, padding=True, return_tensors='pt').to('cuda')
         model.to('cuda')
