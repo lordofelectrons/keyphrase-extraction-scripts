@@ -550,7 +550,7 @@ def main():
         texts = tokenizer.batch_decode(generated, skip_special_tokens=True)
         for i in range(batch_size):
             ext_kp, abs_kp = [], []
-            text_for_kp_search = re.sub("[^A-Za-z0-9 ]", "", texts[i].lower())
+            text_for_kp_search = transform_to_searchable_form(texts[i])
             for kwd in keywords_total[i].split(', '):
                 if kwd.lower() in text_for_kp_search:
                     ext_kp.append(kwd)
