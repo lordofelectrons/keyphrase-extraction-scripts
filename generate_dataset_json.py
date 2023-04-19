@@ -552,7 +552,7 @@ def main():
             ext_kp, abs_kp = [], []
             text_for_kp_search = transform_to_searchable_form(texts[i])
             for kwd in keywords_total[i].split(', '):
-                if kwd.lower() in text_for_kp_search:
+                if transform_to_searchable_form(kwd) in text_for_kp_search:
                     ext_kp.append(kwd)
                 else:
                     abs_kp.append(kwd)
