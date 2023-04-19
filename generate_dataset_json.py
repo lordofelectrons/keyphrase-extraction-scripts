@@ -546,7 +546,7 @@ def main():
             keywords_total.append(', '.join(keywords))
         tokenized_text = tokenizer(keywords_total, padding=True, return_tensors='pt').to('cuda')
         model.to('cuda')
-        generated = model.generate(**tokenized_text, max_length=1000)
+        generated = model.generate(**tokenized_text, max_length=100000)
         texts = tokenizer.batch_decode(generated, skip_special_tokens=True)
         for i in range(batch_size):
             ext_kp, abs_kp = [], []
