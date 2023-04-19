@@ -558,7 +558,7 @@ def main():
                     abs_kp.append(kwd)
             data_unit = {"extractive_keyphrases": ext_kp, "abstractive_keyphrases": abs_kp, "text": texts[i]}
             dataset_for_write.append(data_unit)
-        print('Progress: ' + str(progress) + '/' + str(num_batches) + ' batches...')
+        print('Progress: ' + str(progress + 1) + '/' + str(num_batches) + ' batches...')
         sys.stdout.flush()
     f = open(filepath, 'w+')
     dataset_for_write = json.load(f) + dataset_for_write
