@@ -550,6 +550,8 @@ def main():
         if "train" not in raw_datasets:
             raise ValueError("--do_train requires a train dataset")
         train_dataset = concatenate_datasets([raw_datasets["train"], raw_datasets["train"], raw_datasets["train"],
+                                              raw_datasets["train"], raw_datasets["train"], raw_datasets["train"],
+                                              raw_datasets["train"], raw_datasets["train"], raw_datasets["train"],
                                               raw_datasets["train"], raw_datasets["train"], raw_datasets["train"]
                             ])
         if data_args.max_train_samples is not None:
