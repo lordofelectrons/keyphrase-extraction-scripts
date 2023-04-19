@@ -561,7 +561,11 @@ def main():
         print('Progress: ' + str(progress + 1) + '/' + str(num_batches) + ' batches...')
         sys.stdout.flush()
     f = open(filepath, 'w+')
-    dataset_for_write = json.load(f) + dataset_for_write
+    try:
+        contents = json.load(f)
+    except Exception:
+        contents = []
+    dataset_for_write = contents + dataset_for_write
     json.dump(dataset_for_write, f)
     f.close()
 
