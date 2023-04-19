@@ -556,7 +556,7 @@ def main():
                     ext_kp.append(kwd)
                 else:
                     abs_kp.append(kwd)
-            data_unit = {"extractive_keyphrases": ext_kp, "abstractive_keyphrases": abs_kp, "text": texts[i]}
+            data_unit = {"extractive_keyphrases": ext_kp, "abstractive_keyphrases": abs_kp, "document": texts[i].split(' ')}
             dataset_for_write.append(data_unit)
         print('Progress: ' + str(progress + 1) + '/' + str(num_batches) + ' batches...')
         sys.stdout.flush()
