@@ -515,6 +515,11 @@ def main():
     num_batches = 1000
     batch_size = 10
     dataset_for_write = []
+
+    def transform_to_searchable_form(text_data):
+        return re.sub("[^A-Za-z0-9 ]", "", text_data.lower())
+
+    num = 0
     for progress in range(num_batches):
         keywords_total = []
         for i in range(batch_size):
