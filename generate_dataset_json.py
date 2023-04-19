@@ -528,8 +528,8 @@ def main():
     random.shuffle(example_lengths)
     inputs = list(set(inputs))
     filepath = "/gpfs/space/home/filipenk/tmp/train_inspec.json"
-    num_batches = 1000
-    batch_size = 10
+    num_batches = 1250
+    batch_size = 8
     dataset_for_write = []
 
     def transform_to_searchable_form(text_data):
